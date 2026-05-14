@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">HabitTracker</a>
+
+        <div>
+            <a href="{% url 'login' %}" class="btn btn-outline-light me-2">
+                Login
+            </a>
+
+            <a href="{% url 'register' %}" class="btn btn-primary">
+                Register
+            </a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero text-center text-white d-flex align-items-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold">
+            Build Better Habits Daily
+        </h1>
+
+        <p class="lead mt-3">
+            Track habits, maintain streaks, and improve your life.
+        </p>
+
+        <a href="{% url 'register' %}" class="btn btn-lg btn-success mt-4">
+            Get Started
+        </a>
+    </div>
+</section>
+
+</body>
+</html>

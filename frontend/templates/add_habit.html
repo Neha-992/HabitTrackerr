@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Habit</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <div class="card shadow p-4">
+
+                <h2 class="mb-4">
+                    Add New Habit
+                </h2>
+
+                <form method="POST">
+
+                    {% csrf_token %}
+
+                    <input type="text"
+                           name="title"
+                           placeholder="Habit Title"
+                           class="form-control mb-3"
+                           required>
+
+                    <textarea name="description"
+                              placeholder="Description"
+                              class="form-control mb-3"></textarea>
+
+                    <select name="category"
+                            class="form-select mb-3">
+
+                        <option>Health</option>
+                        <option>Study</option>
+                        <option>Fitness</option>
+                        <option>Spiritual</option>
+                        <option>Productivity</option>
+
+                    </select>
+
+                    <select name="frequency"
+                            class="form-select mb-3">
+
+                        <option>Daily</option>
+                        <option>Weekly</option>
+
+                    </select>
+
+                    <button class="btn btn-primary w-100">
+                        Add Habit
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
