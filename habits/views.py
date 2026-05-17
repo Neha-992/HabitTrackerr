@@ -3,6 +3,8 @@ from django.contrib.auth.decorators import login_required
 from .models import Habit, HabitLog
 from gamification.models import UserProfile
 from datetime import date, timedelta
+import csv
+from django.http import HttpResponse
 
 
 @login_required
@@ -71,6 +73,7 @@ def complete_habit(request, id):
     yesterday = today - timedelta(days=1)
 
     # CHECK IF ALREADY COMPLETED TODAY
+
     already_completed = HabitLog.objects.filter(
         habit=habit,
         date=today
@@ -79,6 +82,7 @@ def complete_habit(request, id):
     if not already_completed:
 
         # CREATE LOG
+
         HabitLog.objects.create(
             habit=habit,
             completed=True,
@@ -129,5 +133,44 @@ def complete_habit(request, id):
             profile.level = 1
 
         profile.save()
+
+    return redirect('dashboard')
+
+
+
+
+
+@login_required
+def export_csv(request):
+
+    response = HttpResponse(
+        content_type='text/csv'
+    )
+
+    response['Content-Disposition'] = (
+        'attachment; filename="habit_logs.csv"'
+    )
+
+    writer = csv.writer(response)
+
+    writer.writerow([
+        'Habit',
+        'Date',
+        'Completed'
+    ])
+
+    logs = HabitLog.objects.filter(
+        habit__user=request.user
+    )
+
+    for log in logs:
+
+        writer.writerow([
+            log.habit.title,
+            log.date,
+            log.completed
+        ])
+
+    return response
 
     return redirect('dashboard')

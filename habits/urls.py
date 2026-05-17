@@ -16,4 +16,7 @@ urlpatterns = [
     path('edit-habit/<int:id>/',
          views.edit_habit,
          name='edit_habit'),
+     path('export-csv/',
+          views.export_csv,
+          name='export_csv'),
 ]

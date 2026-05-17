@@ -131,3 +131,29 @@ body{
     background-size: cover;
     background-position: center;
 }
+
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+    h2{
+        font-size:24px;
+    }
+
+    h3{
+        font-size:20px;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .card{
+        padding:20px !important;
+    }
+
+    canvas{
+        height:250px !important;
+    }
+}
